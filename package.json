@@ -46,6 +46,7 @@
     "build": "node_modules/.bin/rimraf out && node esbuild.config.js",
     "build:push": "npm run build && git add . && git commit -m 'build' && git push",
     "deploy": "npm version patch && npm run build:push && git push --tags && npm publish --tag latest",
+    "local:install": "node ./scripts/install.cjs",
     "lint": "eslint src --ext ts && tsc --noEmit",
     "format": "prettier --write src"
   },
