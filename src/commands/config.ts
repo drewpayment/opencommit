@@ -55,16 +55,25 @@ export const configValidators = {
   [CONFIG_KEYS.OCO_OPENAI_API_KEY](value: any, config: any = {}) {
     //need api key unless running locally with ollama
     validateConfig('API_KEY', value || config.OCO_AI_PROVIDER == 'ollama', 'You need to provide an API key');
-    validateConfig(
-      CONFIG_KEYS.OCO_OPENAI_API_KEY,
-      value.startsWith('sk-'),
-      'Must start with "sk-"'
-    );
-    validateConfig(
-      CONFIG_KEYS.OCO_OPENAI_API_KEY,
-      config[CONFIG_KEYS.OCO_OPENAI_BASE_PATH] || value.length === 51,
-      'Must be 51 characters long'
-    );
+    
+    if (config.OCO_AI_PROVIDER?.trim().toLowerCase() === 'gemini') {
+      validateConfig(
+        CONFIG_KEYS.OCO_OPENAI_API_KEY,
+        value.length > 0,
+        `Using ${config.OCO_AI_PROVIDER} model. A valid API key is required to use the Gemini model.`,
+      );
+    } else {
+      validateConfig(
+        CONFIG_KEYS.OCO_OPENAI_API_KEY,
+        value.startsWith('sk-'),
+        `Using ${config.OCO_AI_PROVIDER || 'openai'} model. Must start with "sk-" for OpenAI API key.`,
+      );
+      validateConfig(
+        CONFIG_KEYS.OCO_OPENAI_API_KEY,
+        config[CONFIG_KEYS.OCO_OPENAI_BASE_PATH] || value.length === 51,
+        'Must be 51 characters long'
+      );
+    }
 
     return value;
   },
@@ -184,9 +193,10 @@ export const configValidators = {
       [
         '',
         'openai',
-        'ollama'
+        'ollama',
+        'gemini',
       ].includes(value),
-      `${value} is not supported yet, use 'ollama' or 'openai' (default)`
+      `${value} is not supported yet, use 'ollama', 'gemini', or 'openai' (default)`
     );
     return value;
   },

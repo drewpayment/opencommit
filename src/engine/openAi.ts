@@ -1,6 +1,5 @@
 import axios from 'axios';
 import chalk from 'chalk';
-import { execa } from 'execa';
 import {
   ChatCompletionRequestMessage,
   Configuration as OpenAiApiConfiguration,

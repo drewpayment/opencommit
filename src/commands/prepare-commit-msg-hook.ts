@@ -49,7 +49,8 @@ export const prepareCommitMessageHook = async (
     spin.start('Generating commit message');
 
     const commitMessage = await generateCommitMessageByDiff(
-      await getDiff({ files: staged })
+      await getDiff({ files: staged }),
+      config.OCO_EMOJI,
     );
     spin.stop('Done');
 
