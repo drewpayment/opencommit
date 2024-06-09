@@ -28111,7 +28111,7 @@ function G3(t2, e3) {
 // package.json
 var package_default = {
   name: "opencommit",
-  version: "3.0.16",
+  version: "3.0.17",
   description: "Auto-generate impressive commits in 1 second. Killing lame commits with AI \u{1F92F}\u{1F52B}",
   keywords: [
     "git",
@@ -28190,8 +28190,8 @@ var package_default = {
     "@actions/core": "^1.10.0",
     "@actions/exec": "^1.1.1",
     "@actions/github": "^5.1.1",
-    "@azure/openai": "^1.0.0-beta.12",
     "@anthropic-ai/sdk": "^0.19.2",
+    "@azure/openai": "^1.0.0-beta.12",
     "@clack/prompts": "^0.6.1",
     "@dqbd/tiktoken": "^1.0.2",
     "@google/generative-ai": "^0.11.4",
