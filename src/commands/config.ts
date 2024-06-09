@@ -301,6 +301,8 @@ export const configValidators = {
     return value;
   },
   [CONFIG_KEYS.OCO_AZURE_ENDPOINT](value: any) {
+    if (CONFIG_KEYS.OCO_AI_PROVIDER !== 'azure') return value;
+    
     validateConfig(
       CONFIG_KEYS.OCO_AZURE_ENDPOINT,
       value.includes('openai.azure.com'),

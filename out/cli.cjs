@@ -30848,6 +30848,8 @@ var configValidators = {
     return value;
   },
   ["OCO_AZURE_ENDPOINT" /* OCO_AZURE_ENDPOINT */](value) {
+    if (true)
+      return value;
     validateConfig(
       "OCO_AZURE_ENDPOINT" /* OCO_AZURE_ENDPOINT */,
       value.includes("openai.azure.com"),
