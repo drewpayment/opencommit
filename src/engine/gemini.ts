@@ -46,10 +46,10 @@ export class Gemini implements AiEngine {
       const result = await this.ai.generateContent({
         contents, 
         safetySettings: [
-          { 
-            category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT, 
-            threshold: HarmBlockThreshold.BLOCK_LOW_AND_ABOVE, 
-          },
+          // { 
+          //   category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT, 
+          //   threshold: HarmBlockThreshold.BLOCK_LOW_AND_ABOVE, 
+          // },
           {
             category: HarmCategory.HARM_CATEGORY_HARASSMENT, 
             threshold: HarmBlockThreshold.BLOCK_LOW_AND_ABOVE
